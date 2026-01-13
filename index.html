@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Ser Humano y Desarrollo Sostenible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #8BC34A;
+            --light-color: #F1F8E9;
+            --dark-color: #1B5E20;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header y Navegación */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo i {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Secciones Generales */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Sección de Presentación */
+        .presentation {
+            background: linear-gradient(to right, var(--light-color) 60%, var(--white) 40%);
+        }
+        
+        .presentation-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .presentation-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+        
+        .presentation-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .presentation-img img:hover {
+            transform: scale(1.05);
+        }
+        
+        .presentation-text {
+            flex: 1;
+        }
+        
+        .presentation-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .presentation-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        /* Sección de Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-ods {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .project-content p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .actions-list {
+            margin-top: 20px;
+        }
+        
+        .actions-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .actions-list i {
+            color: var(--accent-color);
+            margin-top: 3px;
+        }
+        
+        /* Sección de Reflexión */
+        .reflection {
+            background-color: var(--white);
+        }
+        
+        .reflection-questions {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .question h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .question h3 i {
+            color: var(--primary-color);
+        }
+        
+        /* Sección de Habilidades */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .skill-card {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        /* Sección de Galería */
+        .gallery {
+            background-color: var(--white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .presentation-content {
+                flex-direction: column;
+            }
+            
+            .presentation {
+                background: var(--light-color);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                gap: 20px;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>Portafolio Sostenible</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#presentacion">Presentación</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#reflexion">Reflexión</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de Presentación Personal -->
+    <section id="presentacion" class="presentation">
+        <div class="container">
+            <h2 class="section-title">Presentación Personal</h2>
+            <div class="presentation-content">
+                <div class="presentation-img">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Persona trabajando en un huerto sostenible">
+                </div>
+                <div class="presentation-text">
+                    <h1>Alexandra Mendoza</h1>
+                    <p>Soy estudiante de Ciencias Ambientales con una profunda pasión por el desarrollo sostenible y la conservación de nuestros ecosistemas. Mi interés nació durante mi infancia en una comunidad rural, donde presencié de primera mano la relación simbiótica entre las personas y su entorno natural.</p>
+                    <p>Esta asignatura de "Ser Humano y Desarrollo Sostenible" representa para mí la oportunidad de integrar conocimientos teóricos con acciones concretas que puedan generar un impacto positivo en nuestras comunidades. Me motiva especialmente la posibilidad de aplicar soluciones innovadoras a problemas ambientales reales.</p>
+                    <p>Creo firmemente que el futuro del planeta depende de nuestra capacidad para equilibrar el desarrollo humano con la protección del medio ambiente, y estoy comprometida a contribuir a este equilibrio desde mi formación profesional y personal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Proyectos y Actividades -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos y Actividades Realizadas</h2>
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Huerto comunitario">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-ods">ODS 11: Ciudades Sostenibles</span>
+                        <h3>Huerto Comunitario Urbano</h3>
+                        <p>Implementación de un huerto comunitario en un espacio subutilizado del barrio, promoviendo la agricultura urbana y la seguridad alimentaria.</p>
+                        <p><strong>Mi rol:</strong> Coordinadora de diseño y participación comunitaria.</p>
+                        <p><strong>Impacto:</strong> 15 familias beneficiadas, reducción de residuos orgánicos mediante compostaje, creación de un espacio verde de convivencia.</p>
+                        
+                        <div class="actions-list">
+                            <h4>Acciones sostenibles aplicadas:</h4>
+                            <ul>
+                                <li><i class="fas fa-recycle"></i> <span>Uso de materiales reciclados para construcción de camas de cultivo</span></li>
+                                <li><i class="fas fa-tint"></i> <span>Sistema de riego por goteo para ahorro de agua</span></li>
+                                <li><i class="fas fa-users"></i> <span>Talleres de concientización sobre agricultura urbana</span></li>
+                                <li><i class="fas fa-leaf"></i> <span>Implementación de compostera comunitaria</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Panel solar en comunidad">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-ods">ODS 7: Energía Asequible y No Contaminante</span>
+                        <h3>Energía Solar para Centro Comunitario</h3>
+                        <p>Instalación de paneles solares en el centro comunitario para reducir el consumo de energía eléctrica y promover las energías renovables.</p>
+                        <p><strong>Mi rol:</strong> Investigadora y coordinadora de la fase educativa del proyecto.</p>
+                        <p><strong>Impacto:</strong> Reducción del 40% en la factura eléctrica del centro, capacitación de 30 personas en energías renovables.</p>
+                        
+                        <div class="actions-list">
+                            <h4>Acciones sostenibles aplicadas:</h4>
+                            <ul>
+                                <li><i class="fas fa-solar-panel"></i> <span>Investigación de soluciones ecológicas para energía limpia</span></li>
+                                <li><i class="fas fa-bolt"></i> <span>Implementación de técnicas de ahorro de energía complementarias</span></li>
+                                <li><i class="fas fa-chalkboard-teacher"></i> <span>Talleres educativos sobre eficiencia energética</span></li>
+                                <li><i class="fas fa-chart-line"></i> <span>Monitoreo del consumo energético antes y después</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Reciclaje de plásticos">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-ods">ODS 12: Producción y Consumo Responsables</span>
+                        <h3>Campaña "Plásticos por Plantas"</h3>
+                        <p>Campaña de reciclaje que intercambia botellas plásticas por plantas nativas, fomentando el reciclaje y la reforestación simultáneamente.</p>
+                        <p><strong>Mi rol:</strong> Líder del proyecto y coordinadora de logística.</p>
+                        <p><strong>Impacto:</strong> 500kg de plástico reciclado, 200 plantas nativas distribuidas, aumento del 30% en la tasa de reciclaje local.</p>
+                        
+                        <div class="actions-list">
+                            <h4>Acciones sostenibles aplicadas:</h4>
+                            <ul>
+                                <li><i class="fas fa-recycle"></i> <span>Establecimiento de puntos de recolección de plásticos</span></li>
+                                <li><i class="fas fa-tree"></i> <span>Producción de plantas nativas en vivero comunitario</span></li>
+                                <li><i class="fas fa-bullhorn"></i> <span>Campaña de concientización sobre consumo responsable</span></li>
+                                <li><i class="fas fa-handshake"></i> <span>Colaboración con recicladores locales para procesamiento</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Reflexión Crítica -->
+    <section id="reflexion" class="reflection">
+        <div class="container">
+            <h2 class="section-title">Proceso de Aprendizaje y Reflexión Crítica</h2>
+            <div class="reflection-questions">
+                <!-- Pregunta 1 -->
+                <div class="question">
+                    <h3><i class="fas fa-lightbulb"></i> Actividad más reveladora</h3>
+                    <p>La actividad de mayor impacto para mí fue la implementación del huerto comunitario. Más allá de los aspectos técnicos de la agricultura urbana, lo que realmente me transformó fue observar cómo un proyecto ambiental se convirtió en un catalizador de cohesión social. Vecinos que antes no se conocían comenzaron a colaborar, compartir conocimientos y preocuparse conjuntamente por el espacio común. Esto me reveló que la sostenibilidad ambiental está intrínsecamente ligada a la salud social de una comunidad.</p>
+                </div>
+                
+                <!-- Pregunta 2 -->
+                <div class="question">
+                    <h3><i class="fas fa-brain"></i> Aprendizaje significativo</h3>
+                    <p>He comprendido que la relación entre el ser humano y el desarrollo sostenible no es una dicotomía sino una interdependencia. Los humanos no somos entidades separadas del medio ambiente, sino parte integral del mismo. Nuestro bienestar depende directamente de la salud de los ecosistemas, y viceversa. El aprendizaje más significativo ha sido que las soluciones verdaderamente sostenibles deben considerar simultáneamente las dimensiones ambiental, social y económica, sin privilegiar una sobre las otras.</p>
+                </div>
+                
+                <!-- Pregunta 3 -->
+                <div class="question">
+                    <h3><i class="fas fa-globe-americas"></i> Importancia para entender desafíos globales</h3>
+                    <p>Las actividades realizadas me han permitido comprender que los grandes desafíos globales como el cambio climático o la pérdida de biodiversidad tienen manifestaciones locales concretas. A través del trabajo comunitario, he visto cómo la acción colectiva a pequeña escala puede generar impactos medibles y replicables. Esto ha transformado mi percepción de mi papel: ya no me siento como un espectador impotente ante problemas globales, sino como un agente de cambio capaz de contribuir desde lo local a soluciones globales.</p>
+                </div>
+                
+                <!-- Pregunta 4 -->
+                <div class="question">
+                    <h3><i class="fas fa-hands-helping"></i> Capacidad para contribuir</h3>
+                    <p>Me siento significativamente más capacitada y confiada en mi capacidad para contribuir a un futuro más sostenible. Los proyectos realizados me han demostrado que poseo habilidades para identificar problemas ambientales locales, diseñar soluciones viables y movilizar a otros hacia la acción colectiva. Ahora entiendo que el cambio no requiere necesariamente de grandes recursos, sino de creatividad, compromiso y colaboración. Mi motivación ha crecido al comprobar que mis acciones pueden generar impactos positivos y visibles en mi comunidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Habilidades y Competencias -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades y Competencias Desarrolladas</h2>
+            <div class="skills-container">
+                <!-- Habilidad 1 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Pensamiento Crítico Ambiental</h3>
+                    <p>Capacidad para analizar problemas ambientales desde múltiples perspectivas y evaluar soluciones considerando sus impactos a largo plazo.</p>
+                    <p><strong>Ejemplo:</strong> Al diseñar el huerto comunitario, evalué diferentes ubicaciones considerando no solo la exposición solar, sino también la accesibilidad comunitaria y la seguridad del área.</p>
+                </div>
+                
+                <!-- Habilidad 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Investigación Aplicada</h3>
+                    <p>Habilidad para investigar soluciones ecológicas basadas en evidencia y adaptarlas a contextos locales específicos.</p>
+                    <p><strong>Ejemplo:</strong> Investigación comparativa de diferentes sistemas de riego para determinar cuál sería más eficiente en el contexto específico de nuestro huerto comunitario.</p>
+                </div>
+                
+                <!-- Habilidad 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Colaboración en Proyectos Sostenibles</h3>
+                    <p>Capacidad para trabajar efectivamente en equipos multidisciplinarios y movilizar a la comunidad hacia objetivos comunes.</p>
+                    <p><strong>Ejemplo:</strong> Coordinación con arquitectos, ambientalistas y vecinos para diseñar e implementar el sistema de paneles solares del centro comunitario.</p>
+                </div>
+                
+                <!-- Habilidad 4 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Comunicación de Ideas Complejas</h3>
+                    <p>Habilidad para explicar conceptos técnicos de sostenibilidad de manera accesible a diferentes audiencias.</p>
+                    <p><strong>Ejemplo:</strong> Desarrollo de talleres educativos donde expliqué los principios de la energía solar a niños y adultos mayores usando lenguaje simple y ejemplos cotidianos.</p>
+                </div>
+                
+                <!-- Habilidad 5 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Resolución de Problemas Socioambientales</h3>
+                    <p>Capacidad para identificar problemas que conectan dimensiones sociales y ambientales, y diseñar soluciones integrales.</p>
+                    <p><strong>Ejemplo:</strong> Diseño de la campaña "Plásticos por Plantas" que aborda simultáneamente el problema de los residuos plásticos y la necesidad de reforestación urbana.</p>
+                </div>
+                
+                <!-- Habilidad 6 -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Gestión de Proyectos Sostenibles</h3>
+                    <p>Habilidad para planificar, implementar y evaluar proyectos de desarrollo sostenible desde su concepción hasta su conclusión.</p>
+                    <p><strong>Ejemplo:</strong> Gestión completa del proyecto del huerto comunitario, incluyendo planificación, asignación de recursos, coordinación de voluntarios y evaluación de resultados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galería de Experiencias Visuales</h2>
+            <div class="gallery-grid">
+                <!-- Imagen 1 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Preparación del terreno para huerto">
+                    <div class="gallery-caption">
+                        <p>Preparación del terreno para el huerto comunitario. Este momento representa el inicio de un proyecto que transformó un espacio abandonado en un área productiva y de convivencia.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen 2 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1589923186741-7d1d6ccee3c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Instalación de paneles solares">
+                    <div class="gallery-caption">
+                        <p>Instalación de los paneles solares en el centro comunitario. Este proyecto no solo redujo el consumo energético, sino que se convirtió en un ejemplo tangible de energías renovables para la comunidad.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen 3 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571622840901-92ae138bd36e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Taller educativo sobre reciclaje">
+                    <div class="gallery-caption">
+                        <p>Taller educativo sobre reciclaje y consumo responsable. La educación ambiental es fundamental para crear cambios duraderos en los hábitos de la comunidad.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen 4 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Primera cosecha del huerto">
+                    <div class="gallery-caption">
+                        <p>Primera cosecha del huerto comunitario. Este momento simboliza el éxito de un esfuerzo colectivo y la posibilidad de producir alimentos localmente de manera sostenible.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen 5 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w-600&q=80" alt="Reunión de planificación comunitaria">
+                    <div class="gallery-caption">
+                        <p>Reunión de planificación comunitaria para el proyecto de energías renovables. La participación ciudadana es clave para el éxito de cualquier iniciativa de desarrollo sostenible.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen 6 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Intercambio de plásticos por plantas">
+                    <div class="gallery-caption">
+                        <p>Intercambio de plásticos reciclados por plantas nativas. Esta iniciativa incentivó el reciclaje mientras promovía la reforestación urbana, abordando dos problemas ambientales simultáneamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portafolio Sostenible</h3>
+                    <p>Este portafolio documenta mi trayectoria en la asignatura "Ser Humano y Desarrollo Sostenible", mostrando proyectos, aprendizajes y reflexiones sobre nuestra relación con el medio ambiente.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#presentacion">Presentación Personal</a></li>
+                        <li><a href="#proyectos">Proyectos Realizados</a></li>
+                        <li><a href="#reflexion">Reflexión Crítica</a></li>
+                        <li><a href="#habilidades">Habilidades Desarrolladas</a></li>
+                        <li><a href="#galeria">Galería Visual</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-user"></i> Alexandra Mendoza</p>
+                        <p><i class="fas fa-book"></i> Estudiante de Ciencias Ambientales</p>
+                        <p><i class="fas fa-envelope"></i> alexandra.sostenible@ejemplo.edu</p>
+                        <p><i class="fas fa-globe"></i> Asignatura: Ser Humano y Desarrollo Sostenible</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Portafolio de Desarrollo Sostenible. Todos los derechos reservados.</p>
+                <p>Este portafolio es accesible públicamente para fines educativos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
